@@ -1,0 +1,14 @@
+@model CommentAddModel;
+
+<div class="uk-card uk-card-default uk-card-body uk-margin-">
+    <form>
+        <fieldset class="uk-fieldset">
+            @Html.HiddenFor(m => m.UserId)
+            <div class="uk-margin">
+                <textarea asp-for="Text" class="uk-textarea" rows="5" placeholder="Write your comment here..."></textarea>
+            </div>
+        </fieldset>
+
+        <button class="uk-button uk-button-primary" asp-controller="UserComment" asp-action="Post">Send</button>
+    </form>
+</div>

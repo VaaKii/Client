@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PublicAPI.v1.DTO.Identity
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - WebApp</title>
+    <link rel="stylesheet" href="~/lib/uikit-3/css/uikit.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/WebApp.styles.css" asp-append-version="true"/>
+</head>
+<body>
+
+<header>
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" asp-area="" asp-controller="Home" asp-action="Index">Libre.</a>
+        </div>
+
+        <ul class="uk-navbar-nav">
+                <partial name="_LoginPartial"></partial>
+            </ul>
+    </nav>
+
+    @if (ViewContext.RouteData.Values["controller"]?.ToString() != "Home")
+    {
+        <ul class="uk-breadcrumb">
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li>
+                <span>
+                    @ViewBag.Title
+                </span>
+            </li>
+        </ul>
+    }
+</header>
+
+<div class="uk-container">
+    <main role="main">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="uk-position-bottom uk-text-muted">
+    <hr>
+    <div class="uk-container">
+        &copy; 2022 - Libre - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+
+<script src="~/lib/uikit-3/js/uikit.min.js"></script>
+<script src="~/lib/uikit-3/js/uikit-icons.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
